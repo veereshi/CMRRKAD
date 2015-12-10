@@ -1,0 +1,22 @@
+﻿
+@{
+    ViewBag.Title = "UploadDirectory";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Upload Directory</h2>
+@using (Html.BeginForm(null, null, FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+    <div class="col-lg-8">
+        <table class="table table-bordered">
+            <tr><td>Directory Name</td><td> <input type="text" name="txtDirectoryName" value=" " /></td></tr>
+            <tr><td>Bucket Name</td><td> <input type="text" name="txtBucketName" value=" " /></td></tr>
+            <tr><td><input type="submit" value="Submit" class="btn btn-primary" /></td><td></td></tr>
+        </table>
+    </div>
+    <p>@ViewBag.Status</p>
+   
+    @Html.Partial("UploadProgress", (double)@ViewBag.test);
+}
+    <br />
